@@ -1,42 +1,42 @@
-import * as React from "react";
-import { MailOpen } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuIndicator,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+    NavigationMenuViewport,
+  } from "@/components/ui/navigation-menu"
+  
 
 export default function Home() {
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <Card className="w-[350px]">
-                <CardHeader>
-                    <CardTitle>Create project</CardTitle>
-                    <CardDescription>Deploy your new project in one-click.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <form>
-                        <div className="grid w-full items-center gap-4">
-                            <div className="flex flex-col space-y-1.5">
-                                <Label htmlFor="name">Name</Label>
-                                <Input id="name" placeholder="Name of your project" />
+        <div className="flex justify-center">
+            <NavigationMenu>
+                <NavigationMenuList>
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                            <div className="p-3">
+                                hello
                             </div>
-                        </div>
-                    </form>
-                </CardContent>
-                <CardFooter className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
-                    <Button variant="outline">
-                        <MailOpen /> Login with Email
-                    </Button>
-                </CardFooter>
-            </Card>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+            </NavigationMenu>
+            <NavigationMenu>
+                <NavigationMenuList>
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger>Item Two</NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                            <NavigationMenuLink className="p-3" href="/contact">
+                                world
+                            </NavigationMenuLink>
+                        </NavigationMenuContent>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+            </NavigationMenu>
         </div>
     );
 }
