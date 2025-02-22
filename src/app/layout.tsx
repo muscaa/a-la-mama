@@ -20,14 +20,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${font.className} antialiased`}
+                className={`${font.className} antialiased flex flex-col w-screen h-screen`}
             >
-                <div className="flex flex-col w-screen h-screen">
-                    <NavBar />
-                    <main className="h-full max-h-full overflow-y-auto">
-                        {children}
-                    </main>
-                </div>
+                <NavBar />
+                <main className="h-full max-h-full overflow-y-auto">
+                    {children}
+                </main>
             </body>
         </html>
     );
