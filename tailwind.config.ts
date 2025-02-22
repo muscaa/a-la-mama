@@ -10,6 +10,14 @@ export default {
   theme: {
   	extend: {
   		colors: {
+            "misty-rose": "hsl(var(--misty-rose))",
+            "lilac": "hsl(var(--lilac))",
+            "davys-gray": "hsl(var(--davys-gray))",
+            "night": "hsl(var(--night))",
+            "baby-powder": "hsl(var(--baby-powder))",
+            "alabaster": "hsl(var(--alabaster))",
+            "pearl": "hsl(var(--pearl))",
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -55,7 +63,10 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+        fontSize: {
+            "xxs": [ "0.625rem", "0.75rem" ],
+        },
   	}
   },
   plugins: [require("tailwindcss-animate")],

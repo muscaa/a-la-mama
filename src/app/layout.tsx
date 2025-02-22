@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 const font = Montserrat({ subsets: ["latin"] });
 
@@ -23,12 +24,12 @@ export default function RootLayout({
                 className={`${font.className} antialiased flex flex-col w-screen h-screen`}
             >
                 <NavBar />
-                <main className="h-full max-h-full overflow-y-auto">
-                    {children}
-                </main>
-                <footer className="">
-                
-                </footer>
+                <div className="flex flex-col h-full max-h-full overflow-y-auto">
+                    <main className="flex-grow">
+                        {children}
+                    </main>
+                    <Footer />
+                </div>
             </body>
         </html>
     );

@@ -37,8 +37,10 @@ export default function Contact() {
                         <MailOpen /> Login with Email
                     </Button>
 
-                    <Button variant="secondary">Cancel</Button>
-                    <Button variant="default">Cancel</Button>
+                    <div className="flex gap-2">
+                        <Button variant="secondary">Cancel</Button>
+                        <Button variant="default">Cancel</Button>
+                    </div>
                 </CardFooter>
             </Card>
         </div>
