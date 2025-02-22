@@ -3,6 +3,8 @@ import { Montserrat } from "next/font/google";
 
 import "./globals.css";
 
+import NavBar from "@/components/NavBar";
+
 const font = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,7 +22,12 @@ export default function RootLayout({
             <body
                 className={`${font.className} antialiased`}
             >
-                {children}
+                <div className="flex flex-col w-screen h-screen">
+                    <NavBar />
+                    <main className="h-full max-h-full overflow-y-auto">
+                        {children}
+                    </main>
+                </div>
             </body>
         </html>
     );

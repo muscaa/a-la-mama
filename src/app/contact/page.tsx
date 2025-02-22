@@ -13,8 +13,10 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
 export default function Contact() {
+    console.log("Contact page mounted");
+    
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="flex flex-col items-center justify-center h-full">
             <Card className="w-[350px]">
                 <CardHeader>
                     <CardTitle>Create project</CardTitle>
