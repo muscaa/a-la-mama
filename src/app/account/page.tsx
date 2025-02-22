@@ -1,7 +1,7 @@
-export default function Contact() {
+export default function Account() {
     return (
         <div className="flex justify-center items-center h-full">
-            <h3>Contact</h3>
+            <h3>Account</h3>
         </div>
     );
 }

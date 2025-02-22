@@ -1,7 +1,7 @@
-export default function Contact() {
+export default function Catalog() {
     return (
         <div className="flex justify-center items-center h-full">
-            <h3>Contact</h3>
+            <h3>Catalog</h3>
         </div>
     );
 }
