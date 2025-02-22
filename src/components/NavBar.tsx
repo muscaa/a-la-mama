@@ -7,8 +7,9 @@ import {
     ShoppingBasket,
     Menu
 } from "lucide-react";
-import { useIsMobile } from "@/hooks/Main";
+import { useIsMobile } from "@/utils/Hooks";
 import { useState } from "react";
+import { useBasket } from "@/utils/States";
 
 interface LinkButtonProps {
     children: React.ReactNode;
@@ -35,8 +36,7 @@ function LinkButton(props: LinkButtonProps) {
 export default function NavBar() {
     const isMobile = useIsMobile();
     const [menuOpen, setMenuOpen] = useState(false);
-
-    const cosSize = 0;
+    const basket = useBasket();
 
     const SharedLinkButtons = () => (
         <>
@@ -69,9 +69,9 @@ export default function NavBar() {
                     <LinkButton href="/basket" square>
                         <ShoppingBasket size={32} className="min-w-8 min-h-8" />
                         {
-                            cosSize > 0 &&
+                            basket.size > 0 &&
                             <h6 className="absolute right-1 top-1 h-4 p-1 rounded-full bg-lilac flex justify-center items-center">
-                                {cosSize > 99 ? "99+" : cosSize}
+                                {basket.size > 99 ? "99+" : basket.size}
                             </h6>
                         }
                     </LinkButton>
