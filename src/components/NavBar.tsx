@@ -35,7 +35,7 @@ function LinkButton(props: LinkButtonProps) {
 export default function NavBar() {
     const isMobile = useIsMobile();
     const [menuOpen, setMenuOpen] = useState(false);
-    
+
     const cosSize = 300;
 
     const SharedLinkButtons = () => (
@@ -49,14 +49,16 @@ export default function NavBar() {
         <nav className="flex flex-col w-full justify-center items-center bg-davys-gray text-baby-powder relative">
             <div className="flex size-full max-w-6xl justify-between items-center p-2">
                 <div className="flex gap-2">
-                    <LinkButton href="/">LOGO</LinkButton>
+                    <Link href="/" onClick={() => setMenuOpen(false)} className="flex justify-center items-center min-w-14 min-h-14 font-semibold px-6">
+                        LOGO
+                    </Link>
                     {
-                        !isMobile &&
+                        isMobile == false &&
                         <SharedLinkButtons />
                     }
                 </div>
                 {
-                    isMobile &&
+                    isMobile == true &&
                     <div className="absolute left-1/2 -translate-x-1/2">
                         <Button variant="ghost" size="none" onClick={() => setMenuOpen(!menuOpen)} className="min-w-14 min-h-14">
                             <Menu size={32} className="min-w-8 min-h-8" />
@@ -76,7 +78,7 @@ export default function NavBar() {
                 </div>
             </div>
             {
-                isMobile && menuOpen &&
+                isMobile == true && menuOpen &&
                 <div className="absolute top-full flex flex-col gap-2 w-full max-w-6xl justify-center p-2 bg-davys-gray border-t border-border">
                     <SharedLinkButtons />
                 </div>
