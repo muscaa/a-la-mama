@@ -26,6 +26,9 @@ export default function RootLayout({
                 <main className="h-full max-h-full overflow-y-auto">
                     {children}
                 </main>
+                <footer className="">
+                
+                </footer>
             </body>
         </html>
     );

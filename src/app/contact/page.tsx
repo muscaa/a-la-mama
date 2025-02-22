@@ -32,11 +32,13 @@ export default function Contact() {
                         </div>
                     </form>
                 </CardContent>
-                <CardFooter className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
+                <CardFooter className="flex flex-col gap-2">
                     <Button variant="outline">
                         <MailOpen /> Login with Email
                     </Button>
+
+                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="default">Cancel</Button>
                 </CardFooter>
             </Card>
         </div>
