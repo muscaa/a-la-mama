@@ -36,7 +36,7 @@ export default function NavBar() {
     const isMobile = useIsMobile();
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const cosSize = 300;
+    const cosSize = 0;
 
     const SharedLinkButtons = () => (
         <>
@@ -68,9 +68,12 @@ export default function NavBar() {
                 <div className="flex gap-2">
                     <LinkButton href="/cos" square>
                         <ShoppingBasket size={32} className="min-w-8 min-h-8" />
-                        <h6 className="absolute right-1 top-1 h-4 p-1 rounded-full bg-lilac flex justify-center items-center">
-                            {cosSize > 99 ? "99+" : cosSize}
-                        </h6>
+                        {
+                            cosSize > 0 &&
+                            <h6 className="absolute right-1 top-1 h-4 p-1 rounded-full bg-lilac flex justify-center items-center">
+                                {cosSize > 99 ? "99+" : cosSize}
+                            </h6>
+                        }
                     </LinkButton>
                     <LinkButton href="/cont" square>
                         <User size={32} className="min-w-8 min-h-8" />
