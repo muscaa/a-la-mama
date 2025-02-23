@@ -10,6 +10,7 @@ import {
 import { useIsMobile } from "@/utils/Hooks";
 import { useState } from "react";
 import { useBasket } from "@/utils/States";
+import Image from "next/image";
 
 interface LinkButtonProps {
     children: React.ReactNode;
@@ -50,7 +51,7 @@ export default function NavBar() {
             <div className="flex size-full max-w-6xl justify-between items-center p-2">
                 <div className="flex gap-2">
                     <Link href="/" onClick={() => setMenuOpen(false)} className="flex justify-center items-center min-w-14 min-h-14 font-semibold px-6">
-                        LOGO
+                        <Image src="/logo.svg" alt="logo" width={64} height={64} className="size-14" />
                     </Link>
                     {
                         isMobile == false &&
