@@ -67,7 +67,7 @@ export default function NavBar() {
                     </div>
                 }
                 <div className="flex gap-2">
-                    <LinkButton href="/basket" square>
+                    <LinkButton href="/p/basket" square>
                         <ShoppingBasket size={32} className="min-w-8 min-h-8" />
                         {
                             basket.size > 0 &&
@@ -76,7 +76,7 @@ export default function NavBar() {
                             </h6>
                         }
                     </LinkButton>
-                    <LinkButton href="/account" square>
+                    <LinkButton href="/p/account" square>
                         <User size={32} className="min-w-8 min-h-8" />
                     </LinkButton>
                 </div>
