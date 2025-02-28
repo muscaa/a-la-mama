@@ -1,5 +1,6 @@
-import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import { ROUTES } from "@/utils/config";
+import { createCookiesClient } from "@/utils/supabase/server";
 
 export const updateSession = async (request: NextRequest) => {
     // This `try/catch` block is only here for the interactive tutorial.
@@ -12,40 +13,34 @@ export const updateSession = async (request: NextRequest) => {
             },
         });
 
-        const supabase = createServerClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-            {
-                cookies: {
-                    getAll() {
-                        return request.cookies.getAll();
-                    },
-                    setAll(cookiesToSet) {
-                        cookiesToSet.forEach(({ name, value }) =>
-                            request.cookies.set(name, value),
-                        );
-                        response = NextResponse.next({
-                            request,
-                        });
-                        cookiesToSet.forEach(({ name, value, options }) =>
-                            response.cookies.set(name, value, options),
-                        );
-                    },
-                },
+        const supabase = createCookiesClient({
+            getAll() {
+                return request.cookies.getAll();
             },
-        );
+            setAll(cookiesToSet) {
+                cookiesToSet.forEach(({ name, value }) =>
+                    request.cookies.set(name, value),
+                );
+                response = NextResponse.next({
+                    request,
+                });
+                cookiesToSet.forEach(({ name, value, options }) =>
+                    response.cookies.set(name, value, options),
+                );
+            },
+        });
 
         // This will refresh session if expired - required for Server Components
         // https://supabase.com/docs/guides/auth/server-side/nextjs
         const user = await supabase.auth.getUser();
         
         // protected routes
-        if (request.nextUrl.pathname.startsWith("/p/") && user.error) {
-            return NextResponse.redirect(new URL("/g/login", request.url));
+        if (request.nextUrl.pathname.startsWith(ROUTES.PROTECTED) && user.error) {
+            return NextResponse.redirect(new URL(ROUTES.LOGIN, request.url));
         }
 
-        if (request.nextUrl.pathname.startsWith("/g/") && !user.error) {
-            return NextResponse.redirect(new URL("/", request.url));
+        if (request.nextUrl.pathname.startsWith(ROUTES.GUEST) && !user.error) {
+            return NextResponse.redirect(new URL(ROUTES.HOME, request.url));
         }
 
         return response;

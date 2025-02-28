@@ -2,8 +2,12 @@ export const ROUTES = {
     HOME: "/",
     CATALOG: "/catalog",
     CONTACT: "/contact",
+    
+    GUEST: "/g/",
     LOGIN: "/g/login",
     REGISTER: "/g/register",
+
+    PROTECTED: "/p/",
     ACCOUNT: "/p/account",
     BASKET: "/p/basket",
 
