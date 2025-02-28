@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useBasket } from "@/utils/States";
+import { useBasket } from "@/utils/states";
 
 export default function Basket() {
     const basket = useBasket();

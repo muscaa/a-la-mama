@@ -7,9 +7,9 @@ import {
     ShoppingBasket,
     Menu
 } from "lucide-react";
-import { useIsMobile } from "@/utils/Hooks";
+import { useIsMobile } from "@/utils/hooks";
 import { useState } from "react";
-import { useBasket } from "@/utils/States";
+import { useBasket } from "@/utils/states";
 import Image from "next/image";
 
 interface LinkButtonProps {
