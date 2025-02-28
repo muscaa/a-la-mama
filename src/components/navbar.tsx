@@ -11,6 +11,7 @@ import { useIsMobile } from "@/utils/hooks";
 import { useState } from "react";
 import { useBasket } from "@/utils/states";
 import Image from "next/image";
+import { ROUTES } from "@/utils/config";
 
 interface LinkButtonProps {
     children: React.ReactNode;
@@ -41,8 +42,8 @@ export default function NavBar() {
 
     const SharedLinkButtons = () => (
         <>
-            <LinkButton href="/catalog" onClick={() => setMenuOpen(false)}>Catalog</LinkButton>
-            <LinkButton href="/contact" onClick={() => setMenuOpen(false)}>Contact</LinkButton>
+            <LinkButton href={ROUTES.CATALOG} onClick={() => setMenuOpen(false)}>Catalog</LinkButton>
+            <LinkButton href={ROUTES.CONTACT} onClick={() => setMenuOpen(false)}>Contact</LinkButton>
         </>
     );
 
@@ -50,7 +51,7 @@ export default function NavBar() {
         <nav className="flex flex-col w-full justify-center items-center bg-davys-gray text-baby-powder relative">
             <div className="flex size-full max-w-6xl justify-between items-center p-2">
                 <div className="flex gap-2">
-                    <Link href="/" onClick={() => setMenuOpen(false)} className="flex justify-center items-center min-w-14 min-h-14 font-semibold px-6">
+                    <Link href={ROUTES.HOME} onClick={() => setMenuOpen(false)} className="flex justify-center items-center min-w-14 min-h-14 font-semibold px-6">
                         <Image src="/logo.svg" alt="logo" width={64} height={64} className="size-14" />
                     </Link>
                     {
@@ -67,7 +68,7 @@ export default function NavBar() {
                     </div>
                 }
                 <div className="flex gap-2">
-                    <LinkButton href="/p/basket" square>
+                    <LinkButton href={ROUTES.BASKET} square>
                         <ShoppingBasket size={32} className="min-w-8 min-h-8" />
                         {
                             basket.size > 0 &&
@@ -76,7 +77,7 @@ export default function NavBar() {
                             </h6>
                         }
                     </LinkButton>
-                    <LinkButton href="/p/account" square>
+                    <LinkButton href={ROUTES.ACCOUNT} square>
                         <User size={32} className="min-w-8 min-h-8" />
                     </LinkButton>
                 </div>

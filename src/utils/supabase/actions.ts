@@ -4,6 +4,7 @@ import { encodedRedirect } from "@/utils/supabase/utils";
 import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { ROUTES } from "@/utils/config";
 
 export const signUpAction = async (formData: FormData) => {
     const email = formData.get("email")?.toString();
@@ -14,7 +15,7 @@ export const signUpAction = async (formData: FormData) => {
     if (!email || !password) {
         return encodedRedirect(
             "error",
-            "/g/register",
+            ROUTES.REGISTER,
             "Email and password are required",
         );
     }
@@ -23,17 +24,17 @@ export const signUpAction = async (formData: FormData) => {
         email,
         password,
         options: {
-            emailRedirectTo: `${origin}api/v1/auth/callback`,
+            emailRedirectTo: `${origin}${ROUTES.API_AUTH_CALLBACK}`,
         },
     });
 
     if (error) {
         console.error(error.code + " " + error.message);
-        return encodedRedirect("error", "/g/register", error.message);
+        return encodedRedirect("error", ROUTES.REGISTER, error.message);
     } else {
         return encodedRedirect(
             "success",
-            "/g/register",
+            ROUTES.REGISTER,
             "Thanks for signing up! Please check your email for a verification link.",
         );
     }
@@ -43,9 +44,6 @@ export const signInAction = async (formData: FormData) => {
     const email = formData.get("email") as string;
     const password = formData.get("password") as string;
 
-    console.log(email);
-    console.log(password);
-
     const supabase = await createClient();
 
     const { error } = await supabase.auth.signInWithPassword({
@@ -54,10 +52,10 @@ export const signInAction = async (formData: FormData) => {
     });
 
     if (error) {
-        return encodedRedirect("error", "/g/login", error.message);
+        return encodedRedirect("error", ROUTES.LOGIN, error.message);
     }
 
-    return redirect("/p/account");
+    return redirect(ROUTES.ACCOUNT);
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {
@@ -71,7 +69,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
     }
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: `${origin}api/v1/auth/callback?redirect_to=/protected/reset-password`,
+        redirectTo: `${origin}${ROUTES.API_AUTH_CALLBACK}?redirect_to=/protected/reset-password`,
     });
 
     if (error) {
@@ -134,5 +132,5 @@ export const resetPasswordAction = async (formData: FormData) => {
 export const signOutAction = async () => {
     const supabase = await createClient();
     await supabase.auth.signOut();
-    return redirect("/g/login");
+    return redirect(ROUTES.LOGIN);
 };
