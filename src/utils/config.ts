@@ -9,7 +9,7 @@ export const ROUTES = {
 
     PROTECTED: "/p/",
     ACCOUNT: "/p/account",
-    BASKET: "/p/basket",
+    CART: "/p/cart",
 
     API_AUTH_CALLBACK: "/api/v1/auth/callback",
 } as const;

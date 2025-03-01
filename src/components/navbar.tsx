@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
     User,
-    ShoppingBasket,
+    ShoppingCart,
     Menu
 } from "lucide-react";
 import { useIsMobile } from "@/utils/hooks";
 import { useState } from "react";
-import { useBasket } from "@/utils/states";
+import { useCart } from "@/utils/states";
 import Image from "next/image";
 import { ROUTES } from "@/utils/config";
 
@@ -38,7 +38,7 @@ function LinkButton(props: LinkButtonProps) {
 export default function NavBar() {
     const isMobile = useIsMobile();
     const [menuOpen, setMenuOpen] = useState(false);
-    const basket = useBasket();
+    const cart = useCart();
 
     const SharedLinkButtons = () => (
         <>
@@ -68,12 +68,12 @@ export default function NavBar() {
                     </div>
                 }
                 <div className="flex gap-2">
-                    <LinkButton href={ROUTES.BASKET} square>
-                        <ShoppingBasket size={32} className="min-w-8 min-h-8" />
+                    <LinkButton href={ROUTES.CART} square>
+                        <ShoppingCart size={32} className="min-w-8 min-h-8" />
                         {
-                            basket.size > 0 &&
+                            cart.size > 0 &&
                             <h6 className="absolute right-1 top-1 h-4 p-1 rounded-full bg-lilac flex justify-center items-center">
-                                {basket.size > 99 ? "99+" : basket.size}
+                                {cart.size > 99 ? "99+" : cart.size}
                             </h6>
                         }
                     </LinkButton>

@@ -1,4 +1,4 @@
-import { getUser } from "@/utils/supabase/user";
+import { getUser } from "@/utils/supabase/server";
 import { Button } from "@/components/ui/button";
 import { signOutAction } from "@/utils/supabase/actions";
 

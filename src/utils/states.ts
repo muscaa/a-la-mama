@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-export interface Basket {
+export interface Cart {
     size: number;
 
     setSize: (size: number) => void;
     increment: () => void;
 }
 
-export const useBasket = create<Basket>((set) => ({
+export const useCart = create<Cart>((set) => ({
     size: 0,
 
     setSize(size: number) {
