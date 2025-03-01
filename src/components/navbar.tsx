@@ -27,7 +27,7 @@ function LinkButton(props: LinkButtonProps) {
                 variant="ghost"
                 size="none"
                 onClick={props.onClick}
-                className={`relative w-full h-full min-w-14 min-h-14 font-semibold ${props.square ? "" : "px-6"}`}
+                className={`relative w-full h-full min-w-16 min-h-16 font-semibold ${props.square ? "" : "px-6"}`}
             >
                 {props.children}
             </Button>
@@ -51,8 +51,8 @@ export default function NavBar() {
         <nav className="flex flex-col w-full justify-center items-center bg-davys-gray text-baby-powder relative">
             <div className="flex size-full max-w-6xl justify-between items-center p-2">
                 <div className="flex gap-2">
-                    <Link href={ROUTES.HOME} onClick={() => setMenuOpen(false)} className="flex justify-center items-center min-w-14 min-h-14 font-semibold px-6">
-                        <Image src="/logo.svg" alt="logo" width={64} height={64} className="size-14" />
+                    <Link href={ROUTES.HOME} onClick={() => setMenuOpen(false)} className="flex justify-center items-center min-w-16 min-h-16 font-semibold px-6">
+                        <Image src="/logo.svg" alt="logo" width={64} height={64} className="size-16" />
                     </Link>
                     {
                         isMobile == false &&
@@ -62,7 +62,7 @@ export default function NavBar() {
                 {
                     isMobile == true &&
                     <div className="absolute left-1/2 -translate-x-1/2">
-                        <Button variant="ghost" size="none" onClick={() => setMenuOpen(!menuOpen)} className="min-w-14 min-h-14">
+                        <Button variant="ghost" size="none" onClick={() => setMenuOpen(!menuOpen)} className="min-w-16 min-h-16">
                             <Menu size={32} className="min-w-8 min-h-8" />
                         </Button>
                     </div>
