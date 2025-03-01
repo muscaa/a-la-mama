@@ -1,15 +1,19 @@
-"use client";
+import { createClient, getUser } from "@/utils/supabase/server";
+import CartControls from "./cart-controls";
 
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/utils/states";
+export default async function Cart() {
+    const supabase = await createClient();
+    const user = await getUser(supabase);
 
-export default function Cart() {
-    const cart = useCart();
+    const { data, error } = await supabase
+        .from("carts")
+        .select("size")
+        .eq("id", user.id)
+        .single();
 
     return (
         <div className="flex flex-col justify-center items-center h-full">
-            <h3>Cart {cart.size}</h3>
-            <Button onClick={cart.increment}>increment</Button>
+            <CartControls userId={user.id} currentSize={data?.size || 0} />
         </div>
     );
 }

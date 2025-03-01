@@ -5,6 +5,7 @@ import {
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ROUTES } from "@/utils/config";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 export function createCookiesClient(cookies: CookieMethodsServer) {
     return createServerClient(
@@ -37,8 +38,7 @@ export async function createClient() {
     });
 }
 
-export async function getUser(redirectUrl: string = ROUTES.LOGIN) {
-    const supabase = await createClient();
+export async function getUser(supabase: SupabaseClient<any, "public", any>, redirectUrl: string = ROUTES.LOGIN) {
     const userResponse = await supabase.auth.getUser();
     
     if (userResponse.error) {
