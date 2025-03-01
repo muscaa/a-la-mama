@@ -8,33 +8,15 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { SubmitButton } from "./SubmitButton";
+import { SubmitButton } from "@/components/form/submit-button";
+import {
+    Message,
+    MessageBox
+} from "@/components/form/message-box";
 import { signInAction } from "@/utils/supabase/actions";
-
-type Message =
-  | { success: string }
-  | { error: string }
-  | { message: string };
-
-export function FormMessage({ message }: { message: Message }) {
-    return (
-        <div className="flex flex-col gap-2 w-full max-w-md text-sm">
-            {"success" in message && (
-                <p className="text-foreground border-l-2 border-foreground px-4">
-                    {message.success}
-                </p>
-            )}
-            {"error" in message && (
-                <p className="text-destructive border-l-2 border-destructive px-4">
-                    {message.error}
-                </p>
-            )}
-            {"message" in message && (
-                <p className="text-foreground border-l-2 px-4">{message.message}</p>
-            )}
-        </div>
-    );
-}
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/utils/config";
 
 export default async function Login(props: { searchParams: Promise<Message> }) {
     const searchParams = await props.searchParams;
@@ -57,13 +39,20 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
                                 <Label htmlFor="password">Parola</Label>
                                 <Input name="password" type="password" placeholder="Parola" required />
                             </div>
+                            <MessageBox message={searchParams} />
                             <SubmitButton pendingText="Logging In..." formAction={signInAction}>
                                 Login
                             </SubmitButton>
-                            <FormMessage message={searchParams} />
                         </div>
                     </form>
                 </CardContent>
+                <CardFooter className="flex justify-center">
+                    <p>
+                        Nu ai cont? <Link href={ROUTES.REGISTER}>
+                            <Button variant="link" size="none" className="font-semibold">Creeaza unul</Button>
+                        </Link>
+                    </p>
+                </CardFooter>
             </Card>
         </div>
     );
