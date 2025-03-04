@@ -10,6 +10,8 @@
         --baby-powder: 48 33% 97%;
         --alabaster: 51 32% 92%;
         --pearl: 50 31% 84%;
+        --imperial-red: 355 84% 55%;
+        --dark-pastel-green: 138 97% 38%;
 
         --background: var(--baby-powder);
         --foreground: var(--davys-gray);
@@ -32,7 +34,7 @@
         --accent: var(--pearl);
         --accent-foreground: var(--davys-gray);
 
-        --destructive: 0 84.2% 60.2%;
+        --destructive: var(--imperial-red);
         --destructive-foreground: var(--baby-powder);
 
         --border: var(--pearl);

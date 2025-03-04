@@ -13,10 +13,11 @@ export default {
             "misty-rose": "hsl(var(--misty-rose))",
             "lilac": "hsl(var(--lilac))",
             "davys-gray": "hsl(var(--davys-gray))",
-            "night": "hsl(var(--night))",
             "baby-powder": "hsl(var(--baby-powder))",
             "alabaster": "hsl(var(--alabaster))",
             "pearl": "hsl(var(--pearl))",
+            "imperial-red": "hsl(var(--imperial-red))",
+            "dark-pastel-green": "hsl(var(--dark-pastel-green))",
 
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
